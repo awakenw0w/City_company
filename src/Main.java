@@ -49,4 +49,5 @@ class Main {
         }
         System.out.println("\nНаибольший средний объем грузоперевозок в компании " + AvtoCompany[j].getName());
     }
+    
 }
