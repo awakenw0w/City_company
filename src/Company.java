@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Company {
+abstract class Company {
     protected String name; // название
     protected int persons; // колво сотрудников
     protected int money; // месячный фонд зарплаты
@@ -17,7 +17,7 @@ class Company {
         return name;
     }
     public void show(){  //выводим всю информации о компании
-        System.out.println("В компании " + name + " трудятся " + persons + " сотрудников. Фонд зарплаты)" + money);
+        System.out.println("В компании " + name + " трудятся " + persons + " сотрудников. Фонд зарплаты: " + money);
     }
 
     public int averageSalary() { // вычисление средней зп сотрудников
@@ -34,12 +34,11 @@ class Company {
     }
 }
 
-
-class AvtoCompany extends Company{ //автомобильная компания
+class AvtoCompany extends Company { //автомобильная компания
     int count; // колво автомобилей
     int haul; //объем грузоперевозок
 
-    public AvtoCompany(String name, int persons, int money) { // конструктор
+    public AvtoCompany(String name, int persons, int money, int count, int haul) { // конструктор
         super(name, persons, money);
         this.count = count;
         this.haul = haul;
@@ -47,15 +46,10 @@ class AvtoCompany extends Company{ //автомобильная компания
 
     //методы
     //определение среднего объема грузоперевозок
-    public int averageAvto(){
-        return haul/count;
+    public int averageAvto() {
+        return haul / count;
     }
-
-
-
-
-
-
+}
 
 class InsCompany extends Company{ // страховая компания
     int counts; //колво застрахованных лиц
@@ -78,7 +72,10 @@ class InsCompany extends Company{ // страховая компания
     public int averageInsSumma(){ //вычисление среднего размера страховых взносов
         return summaplus/counts;
     }
+    public void show(){
+        super.show();
+        System.out.println("Застрахованных лиц: " + counts + ". Взносы: " + summaplus + ". Выплаты: " + summaminus);
 
+    }
 
-}
 }
